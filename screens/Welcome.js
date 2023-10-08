@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
-const Home = () => {
+const Welcome = () => {
     return (
         <SafeAreaView style={styles.container}>
         <View style={styles.container2}>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Home;
+export default Welcome;

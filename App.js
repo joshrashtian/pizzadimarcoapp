@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
+import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './screens/Home';
 import Layout from './components';
 
 export default function App() {
+
   return (
-    <Home />
+    <Layout />
   );
 }
 
