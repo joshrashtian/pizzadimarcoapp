@@ -25,18 +25,7 @@ function BottomRow() {
   );
 }
 
-function Layout({ navigation }) {
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      navigation.Navigator("Home")
-      const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
+function Layout() {
 
   return (
     <NavigationContainer>

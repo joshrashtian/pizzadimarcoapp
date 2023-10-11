@@ -14,6 +14,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged
 } from "firebase/auth";
 
 
@@ -46,6 +47,17 @@ const Welcome = ({ navigation }) => {
       setLoading(false);
     } 
   }
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      navigation.navigate('Home')
+      const uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
