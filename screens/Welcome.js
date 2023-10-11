@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Stack, useRouter } from "expo-router";
-import { auth } from "../firebase";
+import { auth, firebaseauth } from "../firebase";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -17,7 +17,7 @@ import {
 } from "firebase/auth";
 
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
