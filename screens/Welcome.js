@@ -18,6 +18,7 @@ import {
 } from "firebase/auth";
 
 const Welcome = ({ navigation }) => {
+  const [mode, setMode] = useState("SignIn");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ const Welcome = ({ navigation }) => {
       console.log(response);
     } catch (error) {
       console.log(error);
-      alert("Sign in failed: " + error.message);
+      alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -47,12 +48,11 @@ const Welcome = ({ navigation }) => {
       );
       console.log(response);
     } catch (error) {
-      alert("Sign in failed: " + error.message);
+      alert(error.message);
     } finally {
       setLoading(false);
     }
   };
-
 
   //Handles if the user has been logged in.
   onAuthStateChanged(auth, (user) => {
@@ -64,33 +64,23 @@ const Welcome = ({ navigation }) => {
     }
   });
 
-
   //Login Screen, what the user sees.
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <Text
+        style={{
+          fontSize: 40,
+          fontFamily: "LouisGeorgeCafeBold",
+          marginLeft: 10,
+          color: "#F44",
+          textShadowRadius: 0.3,
+          textShadowColor: "#000",
+        }}
+      >
+        Pizza diMarco
+      </Text>
       <View style={styles.container2}>
-        <Text
-          style={{
-            fontSize: 40,
-            fontFamily: "lemonmilk",
-            textAlign: "center",
-            color: "#F44",
-            textShadowRadius: 0.3,
-            textShadowColor: "#000",
-          }}
-        >
-          Pizza diMarco
-        </Text>
-        <Text style={styles.hometext}>Account Login</Text>
-        <View
-          style={{
-            borderWidth: 0.7,
-            borderColor: "#000",
-            borderRadius: 10,
-            marginVertical: 5,
-            marginHorizontal: 5,
-          }}
-        ></View>
+        <Text style={styles.hometext}>Hello, Let's Get You Signed In.</Text>
         <View style={styles.logincontainer}>
           <TextInput
             placeholder="email"
@@ -114,7 +104,7 @@ const Welcome = ({ navigation }) => {
             onPress={signUp}
             style={[styles.button, styles.buttonOutline]}
           >
-            <Text style={styles.buttonOutlineText}>Register</Text>
+            <Text style={styles.buttonOutlineText}>Register an Account</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -125,7 +115,6 @@ const Welcome = ({ navigation }) => {
 //Exporting our function
 export default Welcome;
 
-
 //Style Sheet
 const styles = StyleSheet.create({
   container: {
@@ -135,15 +124,20 @@ const styles = StyleSheet.create({
   },
   container2: {
     padding: 40,
+    paddingVertical: 70,
     backgroundColor: "#CCC",
-    marginHorizontal: 5,
+    marginHorizontal: 10,
     borderRadius: 30,
+    shadowRadius: 3,
+    shadowColor: "#AAA",
+    shadowOpacity: "20%",
+    shadowOffset: 1,
   },
   hometext: {
     fontFamily: "LouisGeorgeCafe",
-    fontSize: 24,
-    textAlign: "center",
-    marginBottom: 10,
+    fontSize: 36,
+    marginLeft: 10,
+    marginBottom: 30,
   },
   input: {
     padding: 15,
@@ -152,9 +146,9 @@ const styles = StyleSheet.create({
     fontFamily: "LouisGeorgeCafe",
     backgroundColor: "#FFF",
     shadowRadius: 0.2,
-    shadowColor: "#000",
+    shadowColor: "#BBB",
     shadowOpacity: "80%",
-    shadowOffset: 1,
+    shadowOffset: {height: 2},
   },
   buttonContainer: {
     marginTop: 10,
@@ -169,8 +163,8 @@ const styles = StyleSheet.create({
     borderShadowRadius: 1,
     shadowRadius: 0.8,
     shadowColor: "#000",
-    shadowOpacity: "30%",
-    shadowOffset: 1,
+    shadowOpacity: "10%",
+    shadowOffset: {height: 0.6},
   },
   buttontext: {
     fontFamily: "lemonmilk",

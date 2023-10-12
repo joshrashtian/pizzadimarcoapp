@@ -7,7 +7,8 @@ import Layout from "./components";
 
 const getFonts = () => Font.loadAsync({
     'lemonmilk': require("./assets/fonts/LEMONMILK.otf"),
-    'LouisGeorgeCafe': require("./assets/fonts/LouisGeorgeCafe.ttf")
+    'LouisGeorgeCafe': require("./assets/fonts/LouisGeorgeCafe.ttf"),
+    'LouisGeorgeCafeBold': require("./assets/fonts/LouisGeorgeCafeBold.ttf")
 });
 
 

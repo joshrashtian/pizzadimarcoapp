@@ -1,12 +1,23 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import { Stack, useRouter } from "expo-router";
-import { User } from "firebase/auth";
+import { getAuth, User } from "firebase/auth";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+    <SafeAreaView style={styles.exterior}>
+      <View style={styles.headercontainer}>
+        <TouchableOpacity
+          //onPress={}
+        ></TouchableOpacity>
+      </View>
+      <View style={styles.container}>
         <Text style={styles.title}>Welcome back, user!</Text>
       </View>
     </SafeAreaView>
@@ -14,14 +25,15 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  exterior: {
     flex: 1,
     alignContent: "center",
     justifyContent: "center",
     backgroundColor: "#EEE",
   },
-  header: {
+  container: {
     alignContent: "center",
+    backgroundColor: "#FFF",
   },
   title: {
     fontFamily: "LouisGeorgeCafe",
