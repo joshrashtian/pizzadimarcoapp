@@ -18,7 +18,6 @@ import {
 } from "firebase/auth";
 
 const Welcome = ({ navigation }) => {
-  const [mode, setMode] = useState("SignIn");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -57,7 +56,7 @@ const Welcome = ({ navigation }) => {
   //Handles if the user has been logged in.
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      navigation.navigate("Home");
+      navigation.navigate("App");
       const uid = user.uid;
     } else {
       navigation.navigate("Welcome");
@@ -76,11 +75,17 @@ const Welcome = ({ navigation }) => {
           textShadowRadius: 0.3,
           textShadowColor: "#000",
         }}
-      >
-        Pizza diMarco
-      </Text>
+      ></Text>
       <View style={styles.container2}>
-        <Text style={styles.hometext}>Hello, Let's Get You Signed In.</Text>
+        <Text
+          style={[
+            styles.hometext,
+            { fontFamily: "LouisGeorgeCafeBold", marginBottom: 0 },
+          ]}
+        >
+          Hello There!
+        </Text>
+        <Text style={styles.hometext}>Let's Get You Signed In.</Text>
         <View style={styles.logincontainer}>
           <TextInput
             placeholder="email"
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#EEE",
   },
   container2: {
-    padding: 40,
+    padding: 26,
     paddingVertical: 70,
     backgroundColor: "#CCC",
     marginHorizontal: 10,
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
   },
   hometext: {
     fontFamily: "LouisGeorgeCafe",
-    fontSize: 36,
+    fontSize: 40,
     marginLeft: 10,
     marginBottom: 30,
   },
@@ -148,7 +153,7 @@ const styles = StyleSheet.create({
     shadowRadius: 0.2,
     shadowColor: "#BBB",
     shadowOpacity: "80%",
-    shadowOffset: {height: 2},
+    shadowOffset: { height: 2 },
   },
   buttonContainer: {
     marginTop: 10,
@@ -164,7 +169,7 @@ const styles = StyleSheet.create({
     shadowRadius: 0.8,
     shadowColor: "#000",
     shadowOpacity: "10%",
-    shadowOffset: {height: 0.6},
+    shadowOffset: { height: 0.6 },
   },
   buttontext: {
     fontFamily: "lemonmilk",
