@@ -15,12 +15,15 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 const Welcome = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  
 
   //Setting up the sign in function
   const signIn = async () => {
@@ -53,6 +56,17 @@ const Welcome = ({ navigation }) => {
     }
   };
 
+  const googleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const response = await getRedirectResult(auth, provider);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
+  };
+
   //Handles if the user has been logged in.
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -62,6 +76,8 @@ const Welcome = ({ navigation }) => {
       navigation.navigate("Welcome");
     }
   });
+
+
 
   //Login Screen, what the user sees.
   return (
@@ -93,6 +109,7 @@ const Welcome = ({ navigation }) => {
             onChangeText={(text) => setEmail(text)}
             style={styles.input}
           />
+          
           <TextInput
             placeholder="password"
             value={password}
@@ -105,11 +122,31 @@ const Welcome = ({ navigation }) => {
           <TouchableOpacity onPress={signIn} style={styles.button}>
             <Text style={styles.buttontext}>Login</Text>
           </TouchableOpacity>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity
+              style={[styles.button, {backgroundColor: "#4285F4"}]}
+              onPress={googleLogin}
+            >
+              <Text style={[styles.buttontext, { color: "#FFF" }]}>Google</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.button, {backgroundColor: "#189924"}]}>
+              <Text style={[styles.buttontext, { color: "#FFF" }]}>Google</Text>
+            </TouchableOpacity>
+          </View>
+          <Text
+            style={{
+              fontFamily: "LouisGeorgeCafeBold",
+              textAlign: "center",
+              fontSize: 20,
+            }}
+          >
+            - or -
+          </Text>
           <TouchableOpacity
             onPress={signUp}
             style={[styles.button, styles.buttonOutline]}
           >
-            <Text style={styles.buttonOutlineText}>Register an Account</Text>
+            <Text style={styles.buttonOutlineText}>Create Account</Text>
           </TouchableOpacity>
         </View>
       </View>

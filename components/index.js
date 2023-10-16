@@ -22,8 +22,6 @@ export const BottomRow = ({ navigation }) => {
       screenOptions={{
         tabBarStyle: {
           margin: 20,
-          borderRadius: 70,
-          backgroundColor: "#FFF",
         },
         tabBarLabelStyle: {
           alignContent: "center",
