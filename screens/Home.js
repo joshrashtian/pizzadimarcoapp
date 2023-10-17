@@ -8,33 +8,21 @@ import {
   ScrollView,
   FlatList,
   Touchable,
+  Dimensions,
 } from "react-native";
 import { BottomRow } from "../components";
 import { Stack, useRouter } from "expo-router";
 import { getAuth, User } from "firebase/auth";
+import { database } from "../firebase";
+import { categories } from "../components/categorydata";
 
-
-const categories = [
-  {
-    id: "0",
-    title: "Pizza",
-    command: "Welcome",
-  },
-  {
-    id: "1",
-    title: "Calzones"
-  },
-  {
-    id: "2",
-    title: "Sandwiches"
-  },
-  {
-    id: "3",
-    title: "Salads"
-  }
-];
 
 const Home = ({ navigation }) => {
+
+  const [index, setIndex] = useState("0");
+  const [selected, setselected] = useState("1")
+
+
   return (
     <SafeAreaView style={styles.exterior}>
       <Text style={[styles.title, { marginLeft: 10, marginTop: 10 }]}>
@@ -53,20 +41,16 @@ const Home = ({ navigation }) => {
         >
           Featured
         </Text>
-        
-        <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        data={categories}
-        renderItem={({item}) => (
-          <TouchableOpacity style={styles.categories}>
-            <Text style={{fontFamily: 'lemonmilk', fontSize: 24}}>{item.title}</Text>
-          </TouchableOpacity>
-        )}
-        >
-
-        </FlatList>
+        <View style={[styles.categories, {padding: 100}]}>
+          <TouchableOpacity
+          //onPress={}
+          ></TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <Text style={{ fontSize: 20, textAlign: "center" }}>
+            Welcome back, user!
+          </Text>
+        </View>
         <Text
           style={[
             styles.title,
@@ -79,16 +63,18 @@ const Home = ({ navigation }) => {
         >
           Categories
         </Text>
-        <View style={[styles.categories, {padding: 80}]}>
-          <TouchableOpacity
-          //onPress={}
-          ></TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-          <Text style={{ fontSize: 20, textAlign: "center" }}>
-            Welcome back, user!
-          </Text>
-        </View>
+        <FlatList
+        showsHorizontalScrollIndicator
+        horizontal
+        keyExtractor= {(item) => item.id}
+        data={categories}
+        renderItem={({item, index}) => (
+          <TouchableOpacity style={styles.categories} onPress={() => navigation.navigate("Category", item)}>
+            <Text style={{fontFamily: 'LouisGeorgeCafe', fontSize: 20}}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+        >
+        </FlatList>
       </View>
     </SafeAreaView>
   );
@@ -106,6 +92,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     marginVertical: 10,
     padding: 20,
+    paddingHorizontal: 20,
     marginHorizontal: 10,
     borderRadius: 40,
     backgroundColor: "#fff",

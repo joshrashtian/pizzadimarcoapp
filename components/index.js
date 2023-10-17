@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import Icon from "react-native-ico-material-design";
+import Category from "../screens/Category";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,12 +22,10 @@ export const BottomRow = ({ navigation }) => {
       initialRouteName="Home"
       screenOptions={{
         tabBarStyle: {
-          margin: 20,
         },
         tabBarLabelStyle: {
           alignContent: "center",
           fontFamily: 'lemonmilk',
-          color: '#090'
         },
         headerShown: false,
       }}
@@ -54,6 +53,7 @@ function Layout() {
       >
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="App" component={BottomRow} />
+        <Stack.Screen name="Category" component={Category}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
