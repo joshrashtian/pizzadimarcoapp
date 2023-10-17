@@ -20,8 +20,7 @@ import { categories } from "../components/categorydata";
 const Home = ({ navigation }) => {
 
   const [index, setIndex] = useState("0");
-  const [selected, setselected] = useState("1")
-
+  const [selected, setselected] = useState("Pizza")
 
   return (
     <SafeAreaView style={styles.exterior}>
@@ -34,21 +33,21 @@ const Home = ({ navigation }) => {
             styles.title,
             {
               fontFamily: "LouisGeorgeCafeBold",
-              marginTop: 30,
+              marginTop: 20,
               marginLeft: 10,
             },
           ]}
         >
           Featured
         </Text>
-        <View style={[styles.categories, {padding: 100}]}>
+        <View style={[styles.categories, {padding: 80, marginHorizontal: 22}]}>
           <TouchableOpacity
           //onPress={}
           ></TouchableOpacity>
         </View>
         <View style={styles.container}>
           <Text style={{ fontSize: 20, textAlign: "center" }}>
-            Welcome back, user!
+            Dinosaur Pizza
           </Text>
         </View>
         <Text
@@ -56,7 +55,7 @@ const Home = ({ navigation }) => {
             styles.title,
             {
               fontFamily: "LouisGeorgeCafeBold",
-              marginTop: 30,
+              marginTop: 20,
               marginLeft: 10,
             },
           ]}
@@ -64,18 +63,42 @@ const Home = ({ navigation }) => {
           Categories
         </Text>
         <FlatList
-        showsHorizontalScrollIndicator
+        showsHorizontalScrollIndicator={false}
         horizontal
         keyExtractor= {(item) => item.id}
         data={categories}
         renderItem={({item, index}) => (
-          <TouchableOpacity style={styles.categories} onPress={() => navigation.navigate("Category", item)}>
+          <TouchableOpacity style={styles.categories} onPress={() => {
+            setselected(item.title)}}>
             <Text style={{fontFamily: 'LouisGeorgeCafe', fontSize: 20}}>{item.title}</Text>
           </TouchableOpacity>
         )}
-        >
-        </FlatList>
+        />
       </View>
+      <Text
+          style={[
+            styles.title,
+            {
+              fontFamily: "LouisGeorgeCafeBold",
+              marginTop: 20,
+              marginLeft: 10,
+            },
+          ]}
+        >
+        {selected}
+        </Text>
+        <FlatList
+        showsHorizontalScrollIndicator={false}
+        horizontal
+        keyExtractor= {(item) => item.id}
+        data={categories}
+        renderItem={({item, index}) => (
+          <TouchableOpacity style={styles.categories2} onPress={() => {
+            setselected(item.title)}}>
+            <Text style={{fontFamily: 'LouisGeorgeCafe', fontSize: 20}}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+        />
     </SafeAreaView>
   );
 };
@@ -100,9 +123,22 @@ const styles = StyleSheet.create({
     shadowColor: "#AAA",
     shadowOpacity: "100%",
   },
+  categories2: {
+    alignContent: "center",
+    marginVertical: 10,
+    padding: 20,
+    paddingHorizontal: 40,
+    marginHorizontal: 10,
+    borderRadius: 20,
+    backgroundColor: "#fff",
+    shadowOffset: { height: 2 },
+    shadowColor: "#AAA",
+    shadowOpacity: "100%",
+  },
   title: {
     fontFamily: "LouisGeorgeCafe",
     fontSize: 30,
+    textAlign: 'center',
   },
 });
 
