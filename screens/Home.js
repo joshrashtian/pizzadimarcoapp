@@ -15,6 +15,7 @@ import { Stack, useRouter } from "expo-router";
 import { getAuth, User } from "firebase/auth";
 import { database } from "../firebase";
 import { categories } from "../components/categorydata";
+import { Featured } from "../components/featured";
 
 
 const Home = ({ navigation }) => {
@@ -28,28 +29,7 @@ const Home = ({ navigation }) => {
         Welcome back, user!
       </Text>
       <View>
-        <Text
-          style={[
-            styles.title,
-            {
-              fontFamily: "LouisGeorgeCafeBold",
-              marginTop: 20,
-              marginLeft: 10,
-            },
-          ]}
-        >
-          Featured
-        </Text>
-        <View style={[styles.categories, {padding: 80, marginHorizontal: 22}]}>
-          <TouchableOpacity
-          //onPress={}
-          ></TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-          <Text style={{ fontSize: 20, textAlign: "center" }}>
-            Dinosaur Pizza
-          </Text>
-        </View>
+      <Featured />
         <Text
           style={[
             styles.title,
@@ -80,7 +60,7 @@ const Home = ({ navigation }) => {
             styles.title,
             {
               fontFamily: "LouisGeorgeCafeBold",
-              marginTop: 20,
+              marginTop: 10,
               marginLeft: 10,
             },
           ]}
