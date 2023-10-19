@@ -16,12 +16,13 @@ import { getAuth, User } from "firebase/auth";
 import { database } from "../firebase";
 import { categories } from "../components/categorydata";
 import { Featured } from "../components/featured";
+import { Items } from "../components/itemrow";
 
 
 const Home = ({ navigation }) => {
 
-  const [index, setIndex] = useState("0");
   const [selected, setselected] = useState("Pizza")
+
 
   return (
     <SafeAreaView style={styles.exterior}>
@@ -67,17 +68,9 @@ const Home = ({ navigation }) => {
         >
         {selected}
         </Text>
-        <FlatList
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        keyExtractor= {(item) => item.id}
-        data={categories}
-        renderItem={({item, index}) => (
-          <TouchableOpacity style={styles.categories2} onPress={() => {
-            setselected(item.title)}}>
-            <Text style={{fontFamily: 'LouisGeorgeCafe', fontSize: 20}}>{item.title}</Text>
-          </TouchableOpacity>
-        )}
+        <Items 
+          name = 'Pizza'
+          price='$13.95'
         />
     </SafeAreaView>
   );

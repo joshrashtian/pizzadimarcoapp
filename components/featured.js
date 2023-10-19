@@ -36,8 +36,8 @@ export const Featured = () => {
                 <Image source={featuredImage} style={{ height: 100, width: 100, borderRadius: 10}}/>
                 <Text style={[styles.subtitle, { alignSelf: 'center' }]}>{featureditemname}</Text>
             </View>
-            <View style={{ backgroundColor: '#DDD', padding: 10, marginTop: -33, borderRadius: 30, marginLeft: 240 }}>
-            <Text style={[styles.subtitle, styles.price]}>{price}</Text>
+            <View style={{ backgroundColor: '#EEE', padding: 10, marginTop: -33, borderRadius: 30, marginLeft: 240 }}>
+            <Text style={{ fontSize: 14, textAlign: 'center'}}>{price}</Text>
             </View>
         </View>
         </TouchableOpacity> 
