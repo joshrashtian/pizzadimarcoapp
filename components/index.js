@@ -49,7 +49,7 @@ function Layout() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="Welcome"
+        initialRouteName="App"
       >
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="App" component={BottomRow} />

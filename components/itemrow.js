@@ -7,32 +7,49 @@ import {
   ScrollView,
 } from "react-native";
 import categories from "./categorydata";
+import { useState } from "react";
 import React from "react";
+import { Item } from "./item";
 
-export function Items(name, price) {
-  const examples = [
-    { name: "Pizza", price: "$50", image: "" },
-    { name: "BBQ Chicken", price: "$20", image: "" },
+export function Items({Selected}) {
+  console.log(Selected);
+
+  const [category, setCategory] = useState(Selected);
+
+  const pizza = [
+    { id: 1, name: "Cheese", price: "$29.99", image: "" },
+    { id: 2, name: "Pepperoni", price: "$19.99", image: "" },
+    { id: 3, name: "Margarita", price: "$14.99", image: "" },
+    { id: 4, name: "BBQ Chicken", price: "$14.99", image: "" },
   ];
-
-  return (
-    <View>
-      <ScrollView
-      horizontal={true}
-      
-      >
-        {examples.map((item, index) => (
-          <TouchableOpacity>
-            <View key={index} style={styles.categories2}>
-              <Text>{item.name}</Text>
-              <Text>{item.price}</Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
+  const calzone = [
+    { id: 1, name: "Test", price: "$29.99", image: "" },
+    { id: 2, name: "Test", price: "$19.99", image: "" },
+    { id: 3, name: "Test", price: "$14.99", image: "" },
+    { id: 4, name: "BBQ Test", price: "$14.99", image: "" },
+  ];
+  
+    return (
+      <View>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+        >
+          {pizza.map((item, index) => {
+            return (
+              <Item
+                item={item}
+                name={item.name}
+                price={item.price}
+                key={index}
+              />
+            );
+          })}
+        </ScrollView>
+      </View>
+    )
+  }
 
 const styles = StyleSheet.create({
   exterior: {
@@ -40,17 +57,5 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     backgroundColor: "#EEE",
-  },
-  categories2: {
-    alignContent: "center",
-    marginVertical: 3,
-    padding: 20,
-    paddingHorizontal: 40,
-    marginHorizontal: 10,
-    borderRadius: 20,
-    backgroundColor: "#fff",
-    shadowOffset: { height: 2 },
-    shadowColor: "#AAA",
-    shadowOpacity: "100%",
   },
 });

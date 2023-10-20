@@ -23,7 +23,6 @@ const Home = ({ navigation }) => {
 
   const [selected, setselected] = useState("Pizza")
 
-
   return (
     <SafeAreaView style={styles.exterior}>
       <Text style={[styles.title, { marginLeft: 10, marginTop: 10 }]}>
@@ -68,10 +67,7 @@ const Home = ({ navigation }) => {
         >
         {selected}
         </Text>
-        <Items 
-          name = 'Pizza'
-          price='$13.95'
-        />
+        <Items Selected={selected} />
     </SafeAreaView>
   );
 };
