@@ -1,13 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-export function Item({ name, price }) {
+export function ItemComponent({item}) {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={(navigation.navigate("Item", {...item}))}>
       <View style={styles.itemContainer}>
-        <Text style={styles.itemtext}>{name} Pizza</Text>
+        <Text style={styles.itemtext}>{item.name} Pizza</Text>
         <View style={{flexDirection: 'row-reverse'}}>
-          <Text style={styles.itemtext}>{price}</Text>
+          <Text style={styles.itemtext}>{item.price}</Text>
           <View style={{padding: 3, paddingHorizontal: 5, backgroundColor: '#FFEEEE', marginRight: 3, borderRadius: 10}}>
             <Text style={{fontSize: 10}}>M</Text>
           </View>

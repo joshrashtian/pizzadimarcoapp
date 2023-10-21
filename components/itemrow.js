@@ -9,12 +9,9 @@ import {
 import categories from "./categorydata";
 import { useState } from "react";
 import React from "react";
-import { Item } from "./item";
+import { ItemComponent } from "./item";
 
-export function Items({Selected}) {
-  console.log(Selected);
-
-  const [category, setCategory] = useState(Selected);
+export function Items() {
 
   const pizza = [
     { id: 1, name: "Cheese", price: "$29.99", image: "" },
@@ -38,7 +35,7 @@ export function Items({Selected}) {
         >
           {pizza.map((item, index) => {
             return (
-              <Item
+              <ItemComponent
                 item={item}
                 name={item.name}
                 price={item.price}

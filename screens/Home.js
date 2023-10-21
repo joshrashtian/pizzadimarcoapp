@@ -42,18 +42,19 @@ const Home = ({ navigation }) => {
         >
           Categories
         </Text>
-        <FlatList
+        <ScrollView
         showsHorizontalScrollIndicator={false}
         horizontal
-        keyExtractor= {(item) => item.id}
-        data={categories}
-        renderItem={({item, index}) => (
+        >
+        {categories.map((category, index) => {
+        return(
           <TouchableOpacity style={styles.categories} onPress={() => {
-            setselected(item.title)}}>
-            <Text style={{fontFamily: 'LouisGeorgeCafe', fontSize: 20}}>{item.title}</Text>
+            setselected(category.title)}}>
+            <Text style={{fontFamily: 'LouisGeorgeCafe', fontSize: 20}}>{category.title}</Text>
           </TouchableOpacity>
-        )}
-        />
+          )
+        })}
+        </ScrollView>
       </View>
       <Text
           style={[
@@ -67,7 +68,7 @@ const Home = ({ navigation }) => {
         >
         {selected}
         </Text>
-        <Items Selected={selected} />
+        <Items />
     </SafeAreaView>
   );
 };

@@ -3,12 +3,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
 import Welcome from "../screens/Welcome";
 import UserSettings from "../screens/UserSettings";
+import Item from "../screens/ItemScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import Icon from "react-native-ico-material-design";
-import Category from "../screens/Category";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,7 +53,7 @@ function Layout() {
       >
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="App" component={BottomRow} />
-        <Stack.Screen name="Category" component={Category}/>
+        <Stack.Screen name="Item" component={Item}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
