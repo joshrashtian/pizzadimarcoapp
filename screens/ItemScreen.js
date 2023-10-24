@@ -11,6 +11,7 @@ import React from "react";
 import { useRoute } from "@react-navigation/native";
 import Icon from "react-native-ico";
 import { useNavigation } from "@react-navigation/native";
+import BackButton from "../components/backbutton";
 
 export default function Item() {
   const navigation = useNavigation();
@@ -18,28 +19,27 @@ export default function Item() {
   let item = params;
   console.log(params);
   return (
-    <SafeAreaView>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-        <View style={styles.backbutton}>
-          <Icon name="clear-button" color="#AAA" />
-        </View>
-      </TouchableOpacity>
+    <SafeAreaView style={{ backgroundColor: '#FFF'}}>
+      
+      <ScrollView style={styles.container}>
+
+      <BackButton />
+
       <Image
         style={{
           height: 200,
           width: 200,
           alignSelf: "center",
-          marginBottom: 10,
+          marginTop: 30,
         }}
         source={require("../assets/images/ExamplePizza.png")}
       />
-      <ScrollView style={styles.container}>
         <Text
           style={{
             fontSize: 40,
             fontFamily: "LouisGeorgeCafeBold",
             textAlign: "center",
-            marginTop: 20,
+            marginTop: 10,
           }}
         >
           {params.name}
@@ -68,6 +68,18 @@ export default function Item() {
               />
             </View>
           </TouchableOpacity>
+          <View style={[styles.cartbutton, {backgroundColor: '#FFF'}]}>
+            <Text style={{fontFamily: 'lemonmilk', backgroundColor: '#FFF'}}>0</Text>
+          </View>
+          <TouchableOpacity>
+            <View style={[styles.cartbutton, { backgroundColor: "#CCC" }]}>
+              <Icon
+                name="add-plus-button"
+                color="#FFF"
+                group="material-design"
+              />
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity>
             <View
               style={[styles.cartbutton, { flexDirection: "row", width: 180 }]}
@@ -84,16 +96,11 @@ export default function Item() {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={[styles.cartbutton, { backgroundColor: "#CCC" }]}>
-              <Icon
-                name="add-plus-button"
-                color="#FFF"
-                group="material-design"
-              />
-            </View>
-          </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.checkoutbutton} onPress={() => navigation.navigate('Cart')}>
+                <Text style={{fontFamily: 'lemonmilk', color: '#FFF', fontSize: 16}}>Go To Checkout</Text>
+                <Icon name="right" group="basic" color="#FFF" style={{marginLeft: 120}}/>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -102,7 +109,7 @@ export default function Item() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF",
-    paddingBottom: 550,
+    paddingBottom: '100%',
     borderRadius: 30,
   },
   cartbutton: {
@@ -125,4 +132,13 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     borderRadius: 30,
   },
+  checkoutbutton: {
+    backgroundColor: '#d47e2b',
+    padding: 10,
+    marginHorizontal: 36,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'space-between',
+    borderRadius: 30,
+  }
 });

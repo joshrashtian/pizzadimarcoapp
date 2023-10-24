@@ -5,10 +5,7 @@ import Welcome from "../screens/Welcome";
 import UserSettings from "../screens/UserSettings";
 import Item from "../screens/ItemScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
-import Icon from "react-native-ico-material-design";
+import Cart from "../screens/CartScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,7 +50,9 @@ function Layout() {
       >
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="App" component={BottomRow} />
-        <Stack.Screen name="Item" component={Item}/>
+        <Stack.Screen name="Cart" component={Cart} options={{presentation: 'modal'}} />
+        <Stack.Screen name="Item" component={Item} options={{presentation: 'modal'}}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

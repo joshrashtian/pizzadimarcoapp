@@ -10,15 +10,16 @@ import {
 import React from "react";
 import { ItemComponent } from "./item";
 
-export function Items() {
 
-  const pizza = [
-    { id: 1, name: "Cheese", price: "$29.99", image: "" },
-    { id: 2, name: "Pepperoni", price: "$19.99", image: "" },
-    { id: 3, name: "Margarita", price: "$14.99", image: "" },
-    { id: 4, name: "BBQ Chicken", price: "$14.99", image: "" },
-    { id: 5, name: "Vegetarian", price: "$9.99", image: "./images/ExamplePizza.png"}
-  ];
+export const pizza = [
+  { id: 1, name: "Cheese", price: "$29.99", image: "" },
+  { id: 2, name: "Pepperoni", price: "$19.99", image: "" },
+  { id: 3, name: "Margarita", price: "$14.99", image: "" },
+  { id: 4, name: "BBQ Chicken", price: "$14.99", image: "" },
+  { id: 5, name: "Vegetarian", price: "$9.99", image: "./images/ExamplePizza.png"}
+];
+
+export function Items() {
   
     return (
       <View>
