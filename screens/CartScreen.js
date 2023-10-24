@@ -1,10 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Items, pizza } from "../components/itemrow";
 import BackButton from "../components/backbutton";
 
 export default function Cart() {
   const item = pizza[0];
+  console.log(item);
   return (
     <View>
       <BackButton />
@@ -21,6 +22,17 @@ export default function Cart() {
         </View>
         </TouchableOpacity>
       </View>
+      <ScrollView>
+        {
+            item.id.map((fooditem, index)=> {
+                return(
+                    <View key={index}>
+                        <Text>2 x {fooditem.name}</Text>
+                    </View>
+                )
+            })
+        }
+      </ScrollView>
     </View>
   );
 }
